@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#08090b">
+<title>Dev Min Su</title>
+<style>
+:root{color-scheme:dark;--ink:#edf6ff;--green:#79d4ff;--muted:#a1b3c9;--paper:#0b1422}
+*{box-sizing:border-box}body{margin:0;background:#e2e8df;color:var(--ink);font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+.app{width:100%;max-width:450px;min-height:100svh;margin:auto;background:var(--paper);padding:calc(30px + env(safe-area-inset-top)) 28px calc(24px + env(safe-area-inset-bottom));display:flex;flex-direction:column;position:relative;overflow:hidden}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-size:13px;font-weight:800;letter-spacing:2px}.badge{font-size:12px;border:1px solid #cbd8ca;border-radius:30px;padding:7px 12px;color:var(--muted)}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:40px 0 30px}.eyebrow{font-size:12px;letter-spacing:3px;color:var(--green);font-weight:800;margin:0 0 14px}h1{font-size:30px;letter-spacing:-1.5px;margin:0 0 12px;line-height:1.3}.intro{font-size:14px;color:var(--muted);margin:0;line-height:1.7}
+.machine{margin:32px auto 24px;width:100%;position:relative;border:1px solid #d4dfd0;border-radius:32px;background:#fff;box-shadow:0 16px 44px #23452c08;padding:24px 20px}.machine:before,.machine:after{position:absolute;top:50%;transform:translateY(-50%);color:var(--green);font-size:13px}.machine:before{content:'▸';left:18px}.machine:after{content:'◂';right:18px}
+.window{height:160px;overflow:hidden;position:relative;mask-image:linear-gradient(to right,transparent,#000 18%,#000 82%,transparent)}.reel{display:flex;width:100%;will-change:transform}.number{flex:0 0 100%;min-width:0;height:160px;line-height:160px;font-size:112px;letter-spacing:-7px;font-weight:800;font-variant-numeric:tabular-nums;padding-right:7px}.range{font-size:11px;letter-spacing:3px;color:var(--muted);margin-top:12px}.status{font-size:15px;min-height:24px;margin:0;color:var(--muted)}.status strong{color:var(--green)}
+.controls{margin-top:28px}button{width:100%;border:0;border-radius:20px;min-height:66px;background:var(--green);color:white;font:800 20px system-ui,'Apple SD Gothic Neo',sans-serif;cursor:pointer;box-shadow:0 8px 20px #16744722;transition:background .2s,transform .2s;touch-action:manipulation}button:hover:not(:disabled){background:#105b37}button:active:not(:disabled){transform:scale(.98)}button:focus-visible{outline:3px solid #173b2c;outline-offset:5px}button:disabled{cursor:wait;background:#456e58}.hint{font-size:12px;color:var(--muted);margin:14px 0 0;line-height:1.6}
+footer{border-top:1px solid #d5dfd0;padding-top:18px;display:flex;justify-content:space-between;gap:8px;font-size:10px;letter-spacing:1px;color:var(--muted)}
+@media(min-width:600px){body{padding:28px 0}.app{min-height:min(880px,calc(100svh - 56px));border-radius:36px;box-shadow:0 24px 80px #173b2c14}}
+@media(max-height:700px){.app{padding-top:20px;padding-bottom:18px}main{padding:24px 0}.machine{margin:22px auto 18px;padding-top:12px;padding-bottom:12px}.controls{margin-top:22px}}
+@media(prefers-reduced-motion:reduce){button{transition:none}}
+/* Midnight sky theme */
+body{background:#050a12}
+.app{background:radial-gradient(ellipse at 85% 5%,#15314b 0%,transparent 48%),radial-gradient(ellipse at 0% 80%,#102337 0%,transparent 48%),var(--paper)}
+.brand{color:#d6efff}
+.badge{border-color:#2a465f;background:#79d4ff0a;color:#9bdfff}
+h1{color:#f2f8ff}
+.machine{border-color:#31536d;background:linear-gradient(145deg,#152a40,#0d192b);box-shadow:0 20px 60px #00000040,inset 0 1px 0 #a6e2ff14,0 0 40px #79d4ff08}
+.number{color:#b6eaff;text-shadow:0 0 35px #65caff40}
+button{background:linear-gradient(110deg,#9ce4ff,#66c5fa);color:#082337;box-shadow:0 8px 28px #64caff24,inset 0 1px 0 #ffffff55}
+button:hover:not(:disabled){background:#b3eaff;box-shadow:0 8px 36px #64caff40}
+button:focus-visible{outline-color:#b6eaff}
+button:disabled{background:#2f5067;color:#c2deef;box-shadow:none}
+footer{border-color:#273b50}
+@media(min-width:600px){.app{box-shadow:0 24px 80px #00000066,0 0 0 1px #25394c}}
+/* Minimal edition: typography, space, one accent. */
+body{background:#08090b}
+.app{background:#08090b;box-shadow:none;border-radius:0;max-width:450px;padding:calc(32px + env(safe-area-inset-top)) 32px calc(32px + env(safe-area-inset-bottom))}
+header h1{font-size:17px;font-weight:500;letter-spacing:-.4px;margin:0;color:#f5f5f7}
+.badge{border:0;background:none;padding:0;color:#96969e;font-size:13px;letter-spacing:.5px}
+main{padding:0;justify-content:center}
+.machine{border:0;border-radius:0;background:none;box-shadow:none;margin:0 0 64px;padding:0;width:100%}
+.machine:before,.machine:after{content:none}
+.window{height:200px}
+.number{height:200px;line-height:200px;font-size:clamp(112px,34vw,152px);font-weight:400;letter-spacing:-8px;color:#f5f5f7;text-shadow:none}
+.controls{margin:0;width:100%;display:flex;justify-content:center}
+button{width:180px;min-height:56px;border-radius:999px;background:#8bd6ff;color:#071a27;font-size:17px;font-weight:600;box-shadow:none}
+button:hover:not(:disabled){background:#afe3ff;box-shadow:none}
+button:disabled{background:#263b48;color:#a9c5d6}
+.status{position:absolute;width:1px;height:1px;min-height:0;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(min-width:600px){body{padding:0}.app{min-height:100svh;box-shadow:none}}
+@media(max-height:560px){.machine{margin-bottom:24px}.app{padding-top:20px;padding-bottom:20px}}
+.saved{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:0 0 36px;padding:0;list-style:none;width:100%}.saved li{font-size:clamp(22px,6vw,28px);font-weight:500;line-height:44px;font-variant-numeric:tabular-nums;color:#464951}.saved li.filled{background:linear-gradient(100deg,#ff9eaf,#b6a7ff,#88d8ff,#9ce8bd,#ff9eaf);background-size:300% 100%;background-clip:text;-webkit-background-clip:text;color:transparent;animation:rgb-flow 16s ease-in-out infinite alternate}.machine{margin-bottom:28px}@keyframes rgb-flow{from{background-position:0% 50%}to{background-position:100% 50%}}@media(prefers-reduced-motion:reduce){.saved li.filled{animation:none}}.storage-note{font-size:12px;color:#a1b3c9;margin:16px 0 0}.storage-note:empty{display:none}
+</style>
+</head>
+<body>
+<div class="app">
+<header><h1>Dev Min Su</h1></header>
+<main>
+
+<div class="machine" aria-hidden="true"><div class="window"><div class="reel" id="reel"><div class="number">1</div></div></div></div>
+<p class="status" id="status" role="status" aria-live="polite" aria-atomic="true">준비되셨나요?</p>
+<ol class="saved" id="saved" aria-label="저장된 추첨 번호 6자리"></ol>
+<div class="controls"><button type="button" id="draw">추첨</button></div>
+</main>
+
+</div>
+<script>
+'use strict';
+const reel = document.getElementById('reel');
+const button = document.getElementById('draw');
+const status = document.getElementById('status');
+const savedList = document.getElementById('saved');
+const storageKey = 'dev-min-su-picks-v1';
+let picks = [];
+try {
+  const stored = JSON.parse(localStorage.getItem(storageKey) || '[]');
+  if (Array.isArray(stored) && stored.length <= 6 && stored.every(n => Number.isInteger(n) && n >= 1 && n <= 45)) picks = stored;
+} catch (_) { /* 저장이 제한된 환경에서는 메모리에서만 유지합니다. */ }
+function renderSaved() {
+  savedList.replaceChildren(...Array.from({length:6}, (_, i) => {
+    const item = document.createElement('li');
+    item.textContent = picks[i] === undefined ? '·' : String(picks[i]);
+    item.className = picks[i] === undefined ? '' : 'filled';
+    item.style.animationDelay = `${-i * 1.2}s`;
+    item.setAttribute('aria-label', `${i + 1}번째: ${picks[i] === undefined ? '빈 자리' : picks[i] + '번'}`);
+    return item;
+  }));
+}
+function savePicks() {
+  try { localStorage.setItem(storageKey, JSON.stringify(picks)); }
+  catch (_) { /* 저장이 제한된 환경에서는 메모리에서만 유지합니다. */ }
+  renderSaved();
+}
+let current = picks.length ? picks[picks.length - 1] : 1;
+reel.replaceChildren(numberElement(current));
+renderSaved();
+let busy = false;
+// 나머지 연산의 편향을 없애기 위한 rejection sampling.
+function randomNumber() {
+  const range = 45;
+  const limit = Math.floor(4294967296 / range) * range;
+  const buffer = new Uint32Array(1);
+  do { crypto.getRandomValues(buffer); } while (buffer[0] >= limit);
+  return buffer[0] % range + 1;
+}
+function numberElement(value) {
+  const element = document.createElement('div');
+  element.className = 'number';
+  element.textContent = value;
+  return element;
+}
+button.addEventListener('click', async () => {
+  if (busy) return;
+  busy = true;
+  button.disabled = true;
+  button.textContent = '추첨 중…';
+  status.textContent = '행운의 번호를 고르고 있어요…';
+  let animation;
+  try {
+    const result = randomNumber();
+    if (picks.length >= 6) { picks = []; savePicks(); }
+    const steps = 45 * 5 + (result - current + 45) % 45;
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i <= steps; i++) {
+      fragment.appendChild(numberElement((current - 1 + i) % 45 + 1));
+    }
+    reel.replaceChildren(fragment);
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduced && typeof reel.animate === 'function') {
+      animation = reel.animate([
+        {transform:'translateX(0)'},
+        {transform:`translateX(-${steps * 100}%)`}
+      ], {duration:3600, easing:'cubic-bezier(0.12, 0.65, 0.18, 1)', fill:'forwards'});
+      await animation.finished;
+    }
+    current = result;
+    if (animation) animation.cancel();
+    reel.replaceChildren(numberElement(current));
+    picks.push(current);
+    savePicks();
+    status.textContent = `${current}번. 저장된 번호 ${picks.join(', ')}.${picks.length === 6 ? ' 다음 추첨부터 새로운 6개를 저장합니다.' : ''}`;
+  } catch (error) {
+    if (animation) animation.cancel();
+    reel.replaceChildren(numberElement(current));
+    status.textContent = '추첨하지 못했어요. 다시 눌러 주세요.';
+    console.error(error);
+  } finally {
+    busy = false;
+    button.disabled = false;
+    button.textContent = '추첨';
+  }
+});
+</script>
+</body>
+</html>
